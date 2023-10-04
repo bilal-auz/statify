@@ -1,12 +1,40 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@font-face {
+  font-family: 'spotify-bold';
+  src: url('./assets/fonts/bold/CircularSpotifyText-Bold.otf') format('otf'),
+      url('./assets/fonts/bold/CircularSpotifyText-Bold.ttf') format('ttf'),
+      url('./assets/fonts/bold/CircularSpotifyText-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'spotify-mid';
+  src: url('./assets/fonts/medium/CircularSpotifyText-Medium.otf') format('otf'),
+      url('./assets/fonts/medium/CircularSpotifyText-Medium.ttf') format('ttf'),
+      url('./assets/fonts/medium/CircularSpotifyText-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'spotify-txtBook';
+  src: url('./assets/fonts/textBook/CircularSpotifyText-Book.otf') format('otf'),
+      url('./assets/fonts/textBook/CircularSpotifyText-Book.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'spotify-light';
+  src: url('./assets/fonts/light/CircularSpotifyText-Light.otf') format('otf'),
+      url('./assets/fonts/light/CircularSpotifyText-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:'spotify-bold';
+  font-family:'spotify-mid';
+  font-family:'spotify-txtBook';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
