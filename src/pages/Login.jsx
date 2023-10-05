@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { AuthState } from "../Context/AuthContextProvider";
 
 function Login() {
+  const { user, setUser } = AuthState();
+
   const [isLoading, setLoading] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (user) history.push("/dashboard");
+  }, []);
 
   const loginHandler = () => {
     setLoading(true);
+    setUser(true);
+    setLoading(false);
   };
   return (
     <div className="container flex justify-center">
@@ -43,7 +54,7 @@ function Login() {
         </div>
         <div className="flex justify-end w-full px-2">
           <p className="text-right flex flex-row text-sm font-[spotify-txtBook] mr-2">
-            Powered by{" "}
+            Powered by {user}
           </p>
           <img
             className="w-12"
