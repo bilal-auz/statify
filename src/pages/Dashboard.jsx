@@ -6,12 +6,12 @@ function Dashboard() {
   const history = useHistory();
   const { user } = AuthState();
 
-  useEffect(() => {
-    console.log("In dashboard");
-    if (!user) history.push("/login");
-  }, [history]);
+  // useEffect(() => {
+  //   console.log("In dashboard");
+  //   if (!user) history.push("/login");
+  // }, [history]);
 
-  return <div>{(user && "Dashboard") || "NO"}</div>;
+  return <div>{localStorage.getItem("accessToken")}</div>;
 }
 
 export default Dashboard;

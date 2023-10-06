@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthState } from "../Context/AuthContextProvider";
+import { getAccessToken, redirectToAuthPage } from "../services/OAuthService";
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
 
 function Login() {
   const { user, setUser } = AuthState();
@@ -9,14 +12,26 @@ function Login() {
   const history = useHistory();
 
   useEffect(() => {
-    if (user) history.push("/dashboard");
-  }, [history]);
+    if (localStorage.getItem("accessToken")) {
+      history.push("/dashboard");
+    } else if (code) {
+      handleCallBack();
+    }
+  }, []);
 
-  const loginHandler = () => {
+  const loginHandler = async () => {
     setLoading(true);
     setUser(true);
-    history.push("/dashboard");
+    if (!code && !localStorage.getItem("accessToken")) {
+      await redirectToAuthPage();
+    }
     setLoading(false);
+  };
+
+  const handleCallBack = async () => {
+    const data = await getAccessToken(code);
+    localStorage.setItem("accessToken", data.access_token);
+    history.push("/dashboard");
   };
 
   return (
@@ -56,7 +71,7 @@ function Login() {
         </div>
         <div className="flex justify-end w-full px-2">
           <p className="text-right flex flex-row text-sm font-[spotify-txtBook] mr-2">
-            Powered by {(user && "TRUE") || "FALSE"}
+            Powered by
           </p>
           <img
             className="w-12"
