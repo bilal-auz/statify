@@ -7,7 +7,9 @@ const Routes = () => {
   return (
     <Switch>
       <Route path="/login" exact component={Login} />
-      <Route path="/dashboard" exact component={Dashboard} />
+      <React.StrictMode>
+        <Route path="/dashboard" exact component={Dashboard} />
+      </React.StrictMode>
       <Redirect to="dashboard" />
     </Switch>
   );
