@@ -1,11 +1,17 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Routes from "./routes";
+import AuthContextProvider from "./Context/AuthContextProvider";
 
 function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <Routes />
+        <BrowserRouter>
+          <AuthContextProvider>
+            <Routes />
+          </AuthContextProvider>
+        </BrowserRouter>
       </div>
     </div>
   );

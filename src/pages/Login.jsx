@@ -10,13 +10,15 @@ function Login() {
 
   useEffect(() => {
     if (user) history.push("/dashboard");
-  }, []);
+  }, [history]);
 
   const loginHandler = () => {
     setLoading(true);
     setUser(true);
+    history.push("/dashboard");
     setLoading(false);
   };
+
   return (
     <div className="container flex justify-center">
       <div className="wrapper flex flex-col justify-center items-center w-fit p-2">
@@ -54,7 +56,7 @@ function Login() {
         </div>
         <div className="flex justify-end w-full px-2">
           <p className="text-right flex flex-row text-sm font-[spotify-txtBook] mr-2">
-            Powered by {user}
+            Powered by {(user && "TRUE") || "FALSE"}
           </p>
           <img
             className="w-12"
