@@ -24,7 +24,9 @@ function Dashboard() {
           <div className="tabs py-5">
             <a
               className={
-                "tab tab-bordered" + (activeTab === 1 && " tab-active")
+                "tab tab-bordered font-[spotify-light] font-bold " +
+                ((activeTab === 1 && " text-s_green border-s_green") ||
+                  " text-[#a6adba80] hover:text-s_green")
               }
               onClick={() => setActiveTab(1)}
             >
@@ -32,7 +34,9 @@ function Dashboard() {
             </a>
             <a
               className={
-                "tab tab-bordered" + (activeTab === 2 && " tab-active")
+                "tab tab-bordered font-[spotify-light] font-bold" +
+                ((activeTab === 2 && " text-s_green border-s_green") ||
+                  " text-[#a6adba80] hover:text-s_green")
               }
               onClick={() => setActiveTab(2)}
             >

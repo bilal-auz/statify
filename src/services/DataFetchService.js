@@ -31,3 +31,26 @@ export async function getProfileTile() {
     console.log("Error: " + error);
   }
 }
+//4. fetch the current playing song
+export async function fetchCurrentSong() {
+  console.log("fetchCurrentSong");
+
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const { data } = await axios.get(
+      OAuthData.SPOTIFY_API_ENDPOINT + "/me/player/currently-playing",
+      config
+    );
+
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}

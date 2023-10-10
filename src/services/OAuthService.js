@@ -10,7 +10,10 @@ export async function redirectToAuthPage() {
   params.append("client_id", OAuthData.CLIENT_ID);
   params.append("response_type", "code");
   params.append("redirect_uri", encodeURI(OAuthData.CALLBACK_ENDPOINT));
-  params.append("scope", "user-read-private user-read-email");
+  params.append(
+    "scope",
+    "user-read-private user-read-email user-read-currently-playing user-read-playback-state"
+  );
 
   document.location.href =
     OAuthData.SPOTIFY_AUTH_ENDPOINT + "?" + params.toString();
