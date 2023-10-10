@@ -12,7 +12,7 @@ export async function redirectToAuthPage() {
   params.append("redirect_uri", encodeURI(OAuthData.CALLBACK_ENDPOINT));
   params.append(
     "scope",
-    "user-read-private user-read-email user-read-currently-playing user-read-playback-state"
+    "user-read-private user-read-email user-read-currently-playing user-read-playback-state user-top-read"
   );
 
   document.location.href =

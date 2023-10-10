@@ -31,7 +31,7 @@ export async function getProfileTile() {
     console.log("Error: " + error);
   }
 }
-//4. fetch the current playing song
+//4. fetch the current playing song: /me/player/currently-playing
 export async function fetchCurrentSong() {
   console.log("fetchCurrentSong");
 
@@ -49,6 +49,27 @@ export async function fetchCurrentSong() {
     );
 
     console.log(data);
+    return data;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}
+
+//5. fetch top artists/tracks: me/top/
+export async function fetchTopItems(type) {
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const { data } = await axios.get(
+      OAuthData.SPOTIFY_API_ENDPOINT + "/me/top/" + type.toLowerCase(),
+      config
+    );
+
     return data;
   } catch (error) {
     console.log("Error: " + error);
