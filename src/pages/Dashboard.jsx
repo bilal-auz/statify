@@ -42,6 +42,7 @@ function Dashboard() {
             >
               Profile
             </a>
+            <button className="tab tab-bordered btn-disabled flex-1 hover:cursor-default" />
           </div>
           {activeTab == 1 && <MainDashboard />}
           {activeTab == 2 && <Profile />}
