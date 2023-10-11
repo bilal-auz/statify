@@ -57,7 +57,11 @@ export async function fetchCurrentSong() {
 }
 
 //5. fetch top artists/tracks: me/top/
-export async function fetchTopItems(type) {
+export async function fetchTopItems(
+  type,
+  time_range = "medium_term",
+  limit = 20
+) {
   try {
     const config = {
       headers: {
@@ -67,7 +71,13 @@ export async function fetchTopItems(type) {
     };
 
     const { data } = await axios.get(
-      OAuthData.SPOTIFY_API_ENDPOINT + "/me/top/" + type.toLowerCase(),
+      OAuthData.SPOTIFY_API_ENDPOINT +
+        "/me/top/" +
+        type.toLowerCase() +
+        "?time_range=" +
+        time_range +
+        "&limit=" +
+        limit,
       config
     );
 

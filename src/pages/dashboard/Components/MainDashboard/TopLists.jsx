@@ -1,15 +1,20 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { fetchTopItems } from "../../../../services/DataFetchService";
+import TopSongList from "./TopSongList";
+import TopArtistsList from "./TopArtistsList";
 
 function TopLists() {
+  const getTopArtists = async () => {};
+
   return (
     <div className="flex flex-row justify-between mt-5">
       <div className="w-[45%]">
-        <h3 className="text-start ml-5 font-[spotify-bold]">Top Songs</h3>
-        <div className="bg-[#19191b]">list</div>
+        <TopSongList />
       </div>
       <div className="w-[45%]">
-        <h3 className="text-start ml-5 font-[spotify-bold]">Top Artists</h3>
-        <div className="bg-[#19191b]">list</div>
+        <TopArtistsList />
       </div>
     </div>
   );

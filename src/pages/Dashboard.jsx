@@ -15,7 +15,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="h-screen w-screen">
+    <div className="h-screen w-screen overflow-y-scroll">
       <div className="flex flex-col items-center">
         <div className="flex flex-row justify-between w-full max-w-md lg:max-w-7xl items-center px-8 py-4">
           <Title />
