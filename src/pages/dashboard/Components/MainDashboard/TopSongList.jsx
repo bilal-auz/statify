@@ -23,7 +23,7 @@ function TopSongList() {
   return (
     <React.Fragment>
       <h3 className="text-start ml-5 font-[spotify-bold]">Top Songs</h3>
-      <div className="bg-[#19191b] p-7 relative">
+      <div className="bg-[#19191b] p-7 relative rounded-lg">
         {topSongs && (
           <div className="top flex justify-center items-center w-full relative max-w-lg mx-auto h-64 ">
             <img
