@@ -31,15 +31,21 @@ export function calculateTimeListened(tracks) {
 }
 
 export function getMostRepetitiveAlbum(tracks) {
-  const topAlbum = tracks.reduce((count, track) => {
-    const id = track.album.id;
-    count[id] = (count[id] || 0) + 1;
-    return count;
+  const topAlbums = tracks.reduce((albums, track) => {
+    const albumId = track.album.id;
+
+    if (!albums[albumId]) {
+      albums[albumId] = { albumInfo: track.album, count: 0 };
+    }
+
+    albums[albumId].count += 1;
+
+    return albums;
   }, {});
 
-  const albumCountArray = Object.entries(topAlbum);
+  const topAlbumsSorted = Object.entries(topAlbums);
 
-  return albumCountArray.sort((a, b) => b[1] - a[1]);
+  return topAlbumsSorted.sort((a, b) => b[1].count - a[1].count);
 }
 
 export function getMostRepetitiveGenre(artists) {

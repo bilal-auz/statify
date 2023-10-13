@@ -90,13 +90,11 @@ function HeaderSection() {
 
     const data = await fetchTopItems("tracks", "medium_term", 50);
 
-    const topAlbumsIds = getMostRepetitiveAlbum(data.items); //sorted topAlbumsIds[0][0]: album id, topAlbumsIds[0][1]: repetition number
+    const topAlbums = getMostRepetitiveAlbum(data.items); //sorted topAlbumsIds[0][0]: album id, topAlbumsIds[0][1]: repetition number
 
-    const albumInfo = await fetchAlbumInfo(topAlbumsIds[0][0]);
-
-    topAlbumData.name = albumInfo.name;
-    topAlbumData.albumCover = albumInfo.images[2].url;
-    topAlbumData.linkToAlbum = albumInfo.external_urls.spotify;
+    topAlbumData.name = topAlbums[0][1].albumInfo.name;
+    topAlbumData.albumCover = topAlbums[0][1].albumInfo.images[2].url;
+    topAlbumData.linkToAlbum = topAlbums[0][1].albumInfo.external_urls.spotify;
 
     setTopAlbum(topAlbumData);
   };
