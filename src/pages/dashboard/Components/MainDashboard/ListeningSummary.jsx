@@ -26,7 +26,7 @@ function ListeningSummary() {
       </div>
       <div className="divider before:bg-s_white after:bg-s_white"></div>
       <div className="flex flex-row justify-around mb-2">
-        <div className="flex justify-center bg-[#19191b] rounded-lg relative">
+        {/* <div className="flex justify-center bg-[#19191b] rounded-lg relative">
           <div className="flex flex-row p-4 w-[360px] items-center justify-center">
             <div class="flex justify-center items-center">
               <div class="w-12">
@@ -47,9 +47,9 @@ function ListeningSummary() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex justify-center bg-[#19191b] rounded-lg relative">
+        {/* <div className="flex justify-center bg-[#19191b] rounded-lg relative">
           <div className="flex flex-row p-4 w-[360px] items-center justify-center">
             <div class="flex justify-center items-center">
               <div class="w-12">
@@ -70,7 +70,7 @@ function ListeningSummary() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <TopLists />
     </React.Fragment>

@@ -112,8 +112,62 @@ export async function fetchRecentlyPlayedTracks(
 
     data.timeListened = calculateTimeListened(data.items);
 
+    console.log(data);
     return data;
   } catch (error) {
     console.log("Error: " + error);
+  }
+}
+
+// 7. fetch album info by id: /albums/{id}
+export async function fetchAlbumInfo(albumId) {
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const { data } = await axios.get(
+      OAuthData.SPOTIFY_API_ENDPOINT + "/albums/" + albumId,
+      config
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// 8. Fetch Search results: /search
+export async function search(
+  q,
+  type = "album,track,artist,playlist",
+  limit = 10
+) {
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const { data } = await axios.get(
+      OAuthData.SPOTIFY_API_ENDPOINT +
+        "/search" +
+        "?q=" +
+        q +
+        "&type=" +
+        type +
+        "&limit=" +
+        limit,
+      config
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
   }
 }

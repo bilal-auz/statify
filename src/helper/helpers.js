@@ -24,5 +24,34 @@ export function calculateTimeListened(tracks) {
     totalMilliseconds += track.duration_ms;
   });
 
-  return Math.round(totalMilliseconds / 1000 / 60); //return minutes
+  return {
+    minutes: Math.floor(totalMilliseconds / 60000), // get the minutes
+    seconds: Math.floor(totalMilliseconds / 1000) % 60, //get the seconds from the division reminder
+  };
+}
+
+export function getMostRepetitiveAlbum(tracks) {
+  const topAlbum = tracks.reduce((count, track) => {
+    const id = track.album.id;
+    count[id] = (count[id] || 0) + 1;
+    return count;
+  }, {});
+
+  const albumCountArray = Object.entries(topAlbum);
+
+  return albumCountArray.sort((a, b) => b[1] - a[1]);
+}
+
+export function getMostRepetitiveGenre(artists) {
+  const topGenres = artists.reduce((count, artist) => {
+    const genres = artist.genres;
+    genres.forEach((genre) => {
+      count[genre] = (count[genre] || 0) + 1;
+    });
+    return count;
+  }, {});
+
+  const GenresCountArray = Object.entries(topGenres);
+
+  return GenresCountArray.sort((a, b) => b[1] - a[1]);
 }
