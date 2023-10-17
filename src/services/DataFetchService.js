@@ -171,3 +171,29 @@ export async function search(
     console.log(error);
   }
 }
+
+// 9. fetch recommendations: /recommendations
+export async function fetchRecommendations(topTracksIds, limit = 5) {
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const { data } = await axios.get(
+      OAuthData.SPOTIFY_API_ENDPOINT +
+        "/recommendations?" +
+        "limit=" +
+        limit +
+        "&seed_tracks=" +
+        topTracksIds,
+      config
+    );
+
+    return data;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}

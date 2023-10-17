@@ -63,7 +63,7 @@ function TopAlbumsList() {
                   </p>
                   <div className="mr-5">
                     <img
-                      className="w-12 rounded-full"
+                      className="w-12 rounded"
                       src={album[1].albumInfo.images[2].url}
                       alt=""
                     />
