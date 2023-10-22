@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import TopLists from "./TopLists";
 import { fetchRecentlyPlayedTracks } from "../../../../services/DataFetchService";
+import History from "./History";
 
 function ListeningSummary() {
   const [songListenedStats, setSongListenedStats] = useState({});
@@ -11,7 +12,7 @@ function ListeningSummary() {
   }, []);
 
   const getNumberOfSongPlayed = async () => {
-    const data = await fetchRecentlyPlayedTracks();
+    const data = await fetchRecentlyPlayedTracks(50, true);
 
     setSongListenedStats({
       numberOfSongListened: data.items.length,
@@ -73,6 +74,7 @@ function ListeningSummary() {
         </div> */}
       </div>
       <TopLists />
+      <History />
     </React.Fragment>
   );
 }

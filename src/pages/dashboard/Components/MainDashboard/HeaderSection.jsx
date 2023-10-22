@@ -117,7 +117,7 @@ function HeaderSection() {
   };
 
   const getNumberOfSongPlayed = async () => {
-    const data = await fetchRecentlyPlayedTracks();
+    const data = await fetchRecentlyPlayedTracks(50, true);
 
     console.log(data);
 

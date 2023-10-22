@@ -1,6 +1,10 @@
 import axios from "axios";
 import { OAuthData } from "../config/OAuthConfig";
-import { calculateTimeListened, getTodayUnixEpoch } from "../helper/helpers";
+import {
+  calculateTimeListened,
+  getCurrentUnixEpochTime,
+  getTodayUnixEpoch,
+} from "../helper/helpers";
 
 //3. Fetch Profile Data
 // https://api.spotify.com/v1/me
@@ -91,7 +95,8 @@ export async function fetchTopItems(
 //temp default value for after param 1286799450 = 2010 (very old)
 export async function fetchRecentlyPlayedTracks(
   limit = 50,
-  after = getTodayUnixEpoch()
+  // after = getTodayUnixEpoch()
+  after = true
 ) {
   try {
     const config = {
@@ -101,16 +106,19 @@ export async function fetchRecentlyPlayedTracks(
       },
     };
 
-    const { data } = await axios.get(
+    const endpoint =
       OAuthData.SPOTIFY_API_ENDPOINT +
-        "/me/player/recently-played?limit=" +
-        limit +
-        "&after=" +
-        after,
-      config
-    );
+      "/me/player/recently-played?limit=" +
+      limit +
+      (after
+        ? "&after=" + getTodayUnixEpoch()
+        : "&before=" + getCurrentUnixEpochTime());
+
+    const { data } = await axios.get(endpoint, config);
 
     data.timeListened = calculateTimeListened(data.items);
+
+    console.log("timed:- ");
 
     console.log(data);
     return data;

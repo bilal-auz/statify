@@ -17,7 +17,15 @@ export function getTodayUnixEpoch() {
   return unixTime * 1000;
 }
 
-export function calculateTimeListened(tracks) {
+export function getCurrentUnixEpochTime() {
+  const currentDate = new Date(); //initial current date
+
+  const unixTime = Math.floor(currentDate / 1000); // Convert to to unixTime
+
+  return unixTime * 1000;
+}
+
+export function calculateTimeListened(tracks, date = null) {
   let totalMilliseconds = 0;
 
   tracks.forEach(({ track }) => {
@@ -25,8 +33,10 @@ export function calculateTimeListened(tracks) {
   });
 
   return {
+    tracks: tracks,
     minutes: Math.floor(totalMilliseconds / 60000), // get the minutes
     seconds: Math.floor(totalMilliseconds / 1000) % 60, //get the seconds from the division reminder
+    date: date,
   };
 }
 
@@ -60,4 +70,39 @@ export function getMostRepetitiveGenre(artists) {
   const GenresCountArray = Object.entries(topGenres);
 
   return GenresCountArray.sort((a, b) => b[1] - a[1]);
+}
+
+export function getPlayedMinutesOfEachDay(tracks) {
+  var timedTracks = [];
+  console.log("tracks.cursors.before: " + tracks.cursors.before);
+  const endDate = new Date(+tracks.cursors.before);
+  const endDateGMT = new Date(endDate.toISOString().slice(0, -1));
+  const currentDate = new Date();
+
+  console.log(tracks);
+  console.log(currentDate.getDate() + ">=" + endDateGMT.getDate());
+
+  while (currentDate.getDate() >= endDateGMT.getDate()) {
+    console.log(currentDate.getDate());
+    var sameDayTracks = tracks.items.filter((track) => {
+      const trackDate = new Date(track.played_at);
+      trackDate.setUTCSeconds(0);
+      trackDate.setUTCMinutes(0);
+      trackDate.setUTCHours(0);
+
+      return (
+        trackDate.getDate() === currentDate.getDate() &&
+        trackDate.getMonth() === currentDate.getMonth() &&
+        trackDate.getFullYear() === currentDate.getFullYear()
+      );
+    });
+
+    sameDayTracks = calculateTimeListened(sameDayTracks, new Date(currentDate));
+
+    timedTracks = timedTracks.concat(sameDayTracks);
+
+    currentDate.setDate(currentDate.getDate() - 1);
+  }
+
+  return timedTracks;
 }
