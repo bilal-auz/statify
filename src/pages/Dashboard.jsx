@@ -56,7 +56,12 @@ function Dashboard() {
         </div>
         <footer className="footer footer-center p-4 text-base-content font-[spotify-mid] overflow-hidden">
           <aside>
-            <p>Copyright © 2023 By @bilal-auz</p>
+            <p>
+              Copyright © 2023 By{" "}
+              <a href="https://github.com/bilal-auz/" target="_blank">
+                @bilal-auz
+              </a>
+            </p>
           </aside>
         </footer>
       </div>
