@@ -65,6 +65,7 @@ function History() {
 
     return null;
   };
+
   return (
     <div id="history" className="mt-5">
       <h3 className="text-start ml-5 font-[spotify-bold]">
@@ -74,17 +75,17 @@ function History() {
         </span>
       </h3>
       <div className="bg-[#19191b] p-7 relative rounded-lg pb-2">
-        <div id="chart">
+        <div className="flex justify-start bg-white-500">
           <LineChart
-            width={1100}
+            width={1125}
             height={250}
             data={chartData}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
+            // margin={{
+            //   top: 5,
+            //   right: 30,
+            //   left: 20,
+            //   bottom: 5,
+            // }}
           >
             <CartesianGrid strokeDasharray="2" />
             <XAxis tick={{ fontSize: "15px" }} dataKey="date" />
@@ -104,11 +105,11 @@ function History() {
             />
           </LineChart>
         </div>
-        <div className="mt-7">
+        <div className="mt-7 flex flex-col justify-center">
           <ul className="">
             {historyList &&
               historyList.items.slice(0, showNum).map((track, index) => (
-                <li className="flex flex-row text-start items-center mb-5 relative">
+                <li className="flex flex-row text-start items-center mb-5 relative w-full">
                   <p className="w-5 text-base text-gray-500 font-bold">
                     {index + 1}
                   </p>
@@ -119,17 +120,19 @@ function History() {
                       alt=""
                     />
                   </div>
-                  <div className="w-[80%]">
-                    <p className="text-lg font-[spotify-mid]">
-                      {track.track.name}
-                    </p>
-                    <p className="text-sm text-gray-500 font-[spotify-txtBook]">
-                      {track.track.artists[0].name}
+                  <div className="flex-1 pt-1.5 flex justify-between space-x-4">
+                    <div className="">
+                      <p className="text-lg font-[spotify-mid]">
+                        {track.track.name}
+                      </p>
+                      <p className="text-sm text-gray-500 font-[spotify-txtBook]">
+                        {track.track.artists[0].name}
+                      </p>
+                    </div>
+                    <p className="text-base text-gray-500 whitespace-nowrap">
+                      {timeAgo(track.played_at)}
                     </p>
                   </div>
-                  <p className="text-base text-gray-500">
-                    {timeAgo(track.played_at)}
-                  </p>
                 </li>
               ))}
           </ul>
