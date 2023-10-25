@@ -54,6 +54,11 @@ function Dashboard() {
           {activeTab == 1 && <MainDashboard />}
           {activeTab == 2 && <Profile />}
         </div>
+        <footer className="footer footer-center p-4 text-base-content font-[spotify-mid] overflow-hidden">
+          <aside>
+            <p>Copyright © 2023 By @bilal-auz</p>
+          </aside>
+        </footer>
       </div>
     </div>
   );
