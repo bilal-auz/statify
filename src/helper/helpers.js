@@ -1,4 +1,5 @@
 import CryptoJS from "crypto-js";
+import { refreshToken } from "../services/OAuthService";
 
 export function toBase64(text) {
   return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(text));
@@ -129,3 +130,31 @@ export function timeAgo(dateString) {
   const daysAgo = Math.floor(hoursAgo / 24);
   return `${daysAgo} day${daysAgo === 1 ? "" : "s"} ago`;
 }
+
+export const isAuthed = async () => {
+  if (
+    !localStorage.getItem("accessToken") ||
+    !localStorage.getItem("refreshToken")
+  ) {
+    console.log("No Token No refresh");
+    return false;
+  }
+
+  if (new Date() >= new Date(localStorage.getItem("expires_in"))) {
+    console.log("Refresh Token");
+    const newToken = await refreshToken(localStorage.getItem("refreshToken"));
+    localStorage.setItem("accessToken", newToken.access_token);
+
+    //set new refresh_token only if its provided
+    if (newToken.refresh_token) {
+      localStorage.setItem("refreshToken", newToken.refresh_token);
+    }
+
+    //set new expiring date
+    const expire_date = new Date();
+    expire_date.setSeconds(expire_date.getSeconds() + newToken.expires_in);
+    localStorage.setItem("expires_in", expire_date);
+  }
+
+  return true;
+};

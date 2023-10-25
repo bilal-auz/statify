@@ -53,4 +53,26 @@ export async function getAccessToken(code) {
   return data;
 }
 
-//3. Fetch Profile Data
+//3. Refresh Token
+export async function refreshToken(refresh_token) {
+  const BODY_PARAMS = new URLSearchParams();
+  BODY_PARAMS.append("grant_type", "refresh_token");
+  BODY_PARAMS.append("refresh_token", refresh_token);
+
+  const config = {
+    headers: {
+      Authorization:
+        "basic " +
+        toBase64(OAuthData.CLIENT_ID + ":" + OAuthData.CLIENT_SECRET),
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+
+  const { data: newToken } = await axios.post(
+    OAuthData.SPOTIFY_TOKEN_ENDPOINT,
+    BODY_PARAMS,
+    config
+  );
+
+  return newToken;
+}

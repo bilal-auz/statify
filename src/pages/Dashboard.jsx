@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import MainDashboard from "./dashboard/MainDashboard";
 import Profile from "./dashboard/Profile";
 import Title from "./dashboard/Title";
+import { isAuthed } from "../helper/helpers";
 
 function Dashboard() {
   const history = useHistory();
@@ -11,7 +12,13 @@ function Dashboard() {
   const [activeTab, setActiveTab] = useState(1);
 
   useEffect(() => {
-    if (!localStorage.getItem("accessToken")) history.push("/login");
+    const init = async () => {
+      if (!(await isAuthed())) {
+        history.push("/login");
+      }
+    };
+
+    init();
   }, []);
 
   return (

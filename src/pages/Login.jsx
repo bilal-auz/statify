@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthState } from "../Context/AuthContextProvider";
 import { getAccessToken, redirectToAuthPage } from "../services/OAuthService";
+import { isAuthed } from "../helper/helpers";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
@@ -12,17 +13,53 @@ function Login() {
   const history = useHistory();
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      history.push("/dashboard");
-    } else if (code) {
-      handleCallBack();
-    }
+    const init = async () => {
+      if (code) {
+        return handleCallBack();
+      } else if (await isAuthed()) {
+        history.push("/dashboard");
+      }
+    };
+
+    init();
   }, []);
+
+  // const checkAuth = async () => {
+  //   if (
+  //     !localStorage.getItem("accessToken") ||
+  //     !localStorage.getItem("refreshToken")
+  //   ) {
+  //     console.log("No Token No refresh");
+  //     return false;
+  //   }
+
+  //   if (new Date() >= new Date(localStorage.getItem("expires_in"))) {
+  //     console.log("Refresh Token");
+  //     const newToken = await refreshToken(localStorage.getItem("refreshToken"));
+  //     localStorage.setItem("accessToken", newToken.access_token);
+
+  //     //set new refresh_token only if its provided
+  //     if (newToken.refresh_token) {
+  //       localStorage.setItem("refreshToken", newToken.refresh_token);
+  //     }
+
+  //     //set new expiring date
+  //     const expire_date = new Date();
+  //     expire_date.setSeconds(expire_date.getSeconds() + newToken.expires_in);
+  //     localStorage.setItem("expires_in", expire_date);
+  //   }
+
+  //   return true;
+  // };
 
   const loginHandler = async () => {
     setLoading(true);
     setUser(true);
-    if (!code && !localStorage.getItem("accessToken")) {
+    if (
+      !code &&
+      (!localStorage.getItem("accessToken") ||
+        !localStorage.getItem("refreshToken"))
+    ) {
       await redirectToAuthPage();
     }
     setLoading(false);
@@ -30,7 +67,14 @@ function Login() {
 
   const handleCallBack = async () => {
     const data = await getAccessToken(code);
+
     localStorage.setItem("accessToken", data.access_token);
+    localStorage.setItem("refreshToken", data.refresh_token);
+
+    const expire_date = new Date();
+    expire_date.setSeconds(expire_date.getSeconds() + data.expires_in);
+    localStorage.setItem("expires_in", expire_date);
+
     history.push("/dashboard");
   };
 
