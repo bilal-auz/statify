@@ -18,7 +18,7 @@ export async function getProfileTile() {
     };
 
     const { data } = await axios.get(
-      OAuthData.SPOTIFY_API_ENDPOINT + "/me",
+      process.env.REACT_APP_SPOTIFY_API_ENDPOINT + "/me",
       config
     );
 
@@ -49,7 +49,8 @@ export async function fetchCurrentSong() {
     };
 
     const { data } = await axios.get(
-      OAuthData.SPOTIFY_API_ENDPOINT + "/me/player/currently-playing",
+      process.env.REACT_APP_SPOTIFY_API_ENDPOINT +
+        "/me/player/currently-playing",
       config
     );
 
@@ -75,7 +76,7 @@ export async function fetchTopItems(
     };
 
     const { data } = await axios.get(
-      OAuthData.SPOTIFY_API_ENDPOINT +
+      process.env.REACT_APP_SPOTIFY_API_ENDPOINT +
         "/me/top/" +
         type.toLowerCase() +
         "?time_range=" +
@@ -107,7 +108,7 @@ export async function fetchRecentlyPlayedTracks(
     };
 
     const endpoint =
-      OAuthData.SPOTIFY_API_ENDPOINT +
+      process.env.REACT_APP_SPOTIFY_API_ENDPOINT +
       "/me/player/recently-played?limit=" +
       limit +
       (after
@@ -138,7 +139,7 @@ export async function fetchAlbumInfo(albumId) {
     };
 
     const { data } = await axios.get(
-      OAuthData.SPOTIFY_API_ENDPOINT + "/albums/" + albumId,
+      process.env.REACT_APP_SPOTIFY_API_ENDPOINT + "/albums/" + albumId,
       config
     );
 
@@ -163,7 +164,7 @@ export async function search(
     };
 
     const { data } = await axios.get(
-      OAuthData.SPOTIFY_API_ENDPOINT +
+      process.env.REACT_APP_SPOTIFY_API_ENDPOINT +
         "/search" +
         "?q=" +
         q +
@@ -191,7 +192,7 @@ export async function fetchRecommendations(topTracksIds, limit = 5) {
     };
 
     const { data } = await axios.get(
-      OAuthData.SPOTIFY_API_ENDPOINT +
+      process.env.REACT_APP_SPOTIFY_API_ENDPOINT +
         "/recommendations?" +
         "limit=" +
         limit +
