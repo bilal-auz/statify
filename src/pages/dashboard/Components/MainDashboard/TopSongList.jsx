@@ -7,7 +7,6 @@ function TopSongList() {
   const [overP2, setOverP2] = useState(false);
   const [overP3, setOverP3] = useState(false);
   const [topSongs, setTopSong] = useState(undefined);
-  const [TopArtists, setTopArtists] = useState({});
 
   useEffect(() => {
     getTopSongs();

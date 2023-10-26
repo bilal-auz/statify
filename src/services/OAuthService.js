@@ -1,4 +1,3 @@
-import { OAuthData } from "../config/OAuthConfig";
 import axios from "axios";
 import { toBase64 } from "../helper/helpers";
 

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { OAuthData } from "../config/OAuthConfig";
 import {
   calculateTimeListened,
   getCurrentUnixEpochTime,

@@ -4,8 +4,6 @@ const AuthContext = React.createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(false);
-  // Initial Provider State
-  const state = {};
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

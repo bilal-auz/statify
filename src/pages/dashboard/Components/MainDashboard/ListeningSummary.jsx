@@ -1,25 +1,8 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import TopLists from "./TopLists";
-import { fetchRecentlyPlayedTracks } from "../../../../services/DataFetchService";
 import History from "./History";
 
 function ListeningSummary() {
-  const [songListenedStats, setSongListenedStats] = useState({});
-
-  useEffect(() => {
-    getNumberOfSongPlayed();
-  }, []);
-
-  const getNumberOfSongPlayed = async () => {
-    const data = await fetchRecentlyPlayedTracks(50, true);
-
-    setSongListenedStats({
-      numberOfSongListened: data.items.length,
-      timeListened: data.timeListened,
-    });
-  };
-
   return (
     <React.Fragment>
       <div className="flex flex-row mt-8 ml-5 w-full">

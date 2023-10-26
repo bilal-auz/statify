@@ -6,9 +6,7 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  ResponsiveContainer,
   Tooltip,
-  Legend,
 } from "recharts";
 import { fetchRecentlyPlayedTracks } from "../../../../services/DataFetchService";
 import { getPlayedMinutesOfEachDay, timeAgo } from "../../../../helper/helpers";

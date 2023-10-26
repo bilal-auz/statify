@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AuthState } from "../Context/AuthContextProvider";
 import { useHistory } from "react-router-dom";
 import MainDashboard from "./dashboard/MainDashboard";
 import Profile from "./dashboard/Profile";
@@ -8,7 +7,6 @@ import { isAuthed } from "../helper/helpers";
 
 function Dashboard() {
   const history = useHistory();
-  const { user } = AuthState();
   const [activeTab, setActiveTab] = useState(1);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 

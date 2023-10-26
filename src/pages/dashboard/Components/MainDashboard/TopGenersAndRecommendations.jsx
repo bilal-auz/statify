@@ -8,8 +8,6 @@ import {
 import { getMostRepetitiveGenre } from "../../../../helper/helpers";
 
 function TopGenersAndRecommendations() {
-  const [overP2, setOverP2] = useState(false);
-  const [overP3, setOverP3] = useState(false);
   const [topGenres, setTopGenres] = useState(undefined);
   const [recommendations, setRecommendations] = useState(undefined);
 
