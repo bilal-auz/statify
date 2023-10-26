@@ -157,7 +157,7 @@ function HeaderSection() {
                   </div>
                   <a href={currentSong.linkToCurrentSong}>
                     <img
-                      className="w-5 absolute right-2 bottom-2"
+                      className="w-5 absolute right-2 top-2"
                       src="assets/icons/spotify-logo.svg"
                       alt=""
                     />
