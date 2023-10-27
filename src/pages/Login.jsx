@@ -9,7 +9,7 @@ const code = params.get("code");
 function Login() {
   const { user, setUser } = AuthState();
 
-  const [isLoading, setLoading] = useState(false);
+  const [isLoaded, setLoaded] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
@@ -18,6 +18,8 @@ function Login() {
         return handleCallBack();
       } else if (await isAuthed()) {
         history.push("/dashboard");
+      } else {
+        setLoaded(true);
       }
     };
 
@@ -53,7 +55,7 @@ function Login() {
   // };
 
   const loginHandler = async () => {
-    setLoading(true);
+    setLoaded(false);
     setUser(true);
     if (
       !code &&
@@ -62,10 +64,11 @@ function Login() {
     ) {
       await redirectToAuthPage();
     }
-    setLoading(false);
   };
 
   const handleCallBack = async () => {
+    setLoaded(false);
+
     const data = await getAccessToken(code);
 
     localStorage.setItem("accessToken", data.access_token);
@@ -90,7 +93,7 @@ function Login() {
             class="btn btn-wide btn-sm bg-s_green text-s_black font-[spotify-mid] capitalize hover:bg-s_green rounded-lg btn-md"
             onClick={loginHandler}
           >
-            {(isLoading && (
+            {(!isLoaded && (
               <span className="loading loading-spinner"></span>
             )) || (
               <React.Fragment>
