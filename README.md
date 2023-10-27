@@ -1,3 +1,7 @@
+# Required System information
+- Node.js version: v16.20.2
+- NPM version: v8.19.4
+  
 # Preview
 ![statify](https://github.com/bilal-auz/statify/assets/68505433/b23a864f-48d7-4c4a-b211-82b628ce4f9d)
 
