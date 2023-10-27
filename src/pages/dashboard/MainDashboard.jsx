@@ -6,7 +6,7 @@ import ListeningSummary from "./Components/MainDashboard/ListeningSummary";
 function MainDashboard() {
   return (
     <div className="flex flex-col w-full">
-      <div className="flex flex-row justify-between mb-2">
+      <div className="flex flex-col justify-between mb-2 xl:flex-row">
         <HeaderSection />
       </div>
       <div className="flex flex-col justify-between mb-2">

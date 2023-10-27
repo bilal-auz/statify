@@ -29,10 +29,10 @@ function Dashboard() {
         {isAuthenticated && (
           <div className="h-screen w-screen overflow-y-scroll">
             <div className="flex flex-col items-center">
-              <div className="flex flex-row justify-between w-full max-w-md lg:max-w-7xl items-center px-8 py-4">
+              <div className="flex flex-row justify-between w-full max-w-md xl:max-w-7xl items-center px-8 py-4">
                 <Title />
               </div>
-              <div className="body flex flex-col mx-auto w-full max-w-md lg:max-w-7xl px-8">
+              <div className="body flex flex-col mx-auto w-full max-w-md xl:max-w-7xl px-8">
                 <div className="tabs py-5">
                   <a
                     className={
@@ -59,17 +59,17 @@ function Dashboard() {
                 {activeTab == 1 && <MainDashboard />}
                 {activeTab == 2 && <Profile />}
               </div>
-              <footer className="footer footer-center p-4 text-base-content font-[spotify-mid] overflow-hidden">
-                <aside>
-                  <p>
-                    Copyright © 2023 By{" "}
-                    <a href="https://github.com/bilal-auz/" target="_blank">
-                      @bilal-auz
-                    </a>
-                  </p>
-                </aside>
-              </footer>
             </div>
+            <footer className="footer footer-center p-4 text-base-content font-[spotify-mid]">
+              <aside>
+                <p>
+                  Copyright © 2023 By
+                  <a href="https://github.com/bilal-auz/" target="_blank">
+                    @bilal-auz
+                  </a>
+                </p>
+              </aside>
+            </footer>
           </div>
         )}
       </React.Fragment>

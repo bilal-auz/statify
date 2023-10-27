@@ -128,7 +128,7 @@ function HeaderSection() {
 
   return (
     <React.Fragment>
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full xl:w-[30%]">
         <div className="flex justify-center bg-[#19191b] rounded-lg relative mb-5">
           <div className="flex flex-row p-4 w-[360px] min-h-[88px] items-center justify-center">
             {(currentSong == null && (
@@ -168,9 +168,9 @@ function HeaderSection() {
           </div>
         </div>
 
-        <div className="flex justify-between relative w-[360px] max-h-[88px]">
+        <div className="flex justify-between relative w-full">
           <div className="flex justify-center bg-[#19191b] rounded-lg relative w-[45%]">
-            <div className="flex flex-col p-4 items-center justify-center">
+            <div className="flex flex-col p-4 items-center min-h-[88px] justify-center">
               <p className="font-[spotify-mid] text-sm text-[#a7a7a7]">
                 Song Listened
               </p>
@@ -236,7 +236,7 @@ function HeaderSection() {
         </div>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full mt-5 xl:w-[30%] xl:mt-0">
         <div className="flex justify-center bg-[#19191b] rounded-lg relative mb-5">
           <div className="flex flex-row p-4 w-[360px] items-center">
             <div class="flex justify-center items-center">
@@ -292,7 +292,7 @@ function HeaderSection() {
         </div>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full mt-5 xl:w-[30%] xl:mt-0">
         <div className="flex justify-center bg-[#19191b] rounded-lg relative mb-5">
           <div className="flex flex-row p-4 w-[360px] items-center">
             <div class="flex justify-center items-center">

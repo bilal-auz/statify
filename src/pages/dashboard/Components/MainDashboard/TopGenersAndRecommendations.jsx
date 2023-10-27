@@ -35,7 +35,7 @@ function TopGenersAndRecommendations() {
 
   return (
     <React.Fragment>
-      <h3 className="text-start ml-5 font-[spotify-bold]">Top Genres</h3>
+      <h3 className="text-start ml-5 font-[spotify-bold] mb-2">Top Genres</h3>
       <div className="bg-[#19191b] px-7 py-1 pb-6 relative rounded-lg">
         <div className="mt-7">
           <ul className="">

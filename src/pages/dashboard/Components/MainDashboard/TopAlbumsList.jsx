@@ -23,15 +23,15 @@ function TopAlbumsList() {
 
   return (
     <React.Fragment>
-      <h3 className="text-start ml-5 font-[spotify-bold]">Top Albums</h3>
-      <div className="bg-[#19191b] p-7 relative rounded-lg">
+      <h3 className="text-start ml-5 font-[spotify-bold] mb-2">Top Albums</h3>
+      <div className="bg-[#19191b] px-7 py-0 pb-2 relative rounded-lg xl:p-7">
         {topAlbums && (
           <div className="top flex justify-center items-center w-full relative max-w-lg mx-auto h-64 ">
             <img
               src={topAlbums[0][1].albumInfo.images[0].url}
               alt="Image 1"
               className={
-                "p1 rounded-lg w-60 absolute z-20 duration-300 hover:scale-105 " +
+                "p1 rounded-lg w-44 xl:w-60 absolute z-20 duration-300 hover:scale-105 " +
                 (overP2 ? "translate-x-5 scale-90 rotate-6" : "") +
                 (overP3 ? "-translate-x-5 scale-90 -rotate-6" : "")
               }
@@ -39,14 +39,14 @@ function TopAlbumsList() {
             <img
               src={topAlbums[1][1].albumInfo.images[0].url}
               alt="Image 2"
-              class="p2 rounded-lg w-48 absolute left-0 z-10 duration-300 hover:scale-105 hover:-translate-x-2"
+              class="p2 rounded-lg w-32 xl:w-48 absolute left-0 z-10 duration-300 hover:scale-105 hover:-translate-x-2"
               onMouseOver={() => setOverP2(true)}
               onMouseLeave={() => setOverP2(false)}
             />
             <img
               src={topAlbums[2][1].albumInfo.images[0].url}
               alt="Image 3"
-              class="p3 rounded-lg w-44 absolute right-0 z-0 duration-300 hover:scale-105 hover:translate-x-2"
+              class="p3 rounded-lg w-28 xl:w-44 absolute right-0 z-0 duration-300 hover:scale-105 hover:translate-x-2"
               onMouseOver={() => setOverP3(true)}
               onMouseLeave={() => setOverP3(false)}
             />

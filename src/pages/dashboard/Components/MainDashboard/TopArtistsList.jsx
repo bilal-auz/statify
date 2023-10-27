@@ -21,15 +21,15 @@ function TopArtistsList() {
 
   return (
     <React.Fragment>
-      <h3 className="text-start ml-5 font-[spotify-bold]">Top Artists</h3>
-      <div className="bg-[#19191b] p-7 relative rounded-lg">
+      <h3 className="text-start ml-5 font-[spotify-bold] mb-2">Top Artists</h3>
+      <div className="bg-[#19191b] px-7 py-0 pb-2 relative rounded-lg xl:p-7">
         {topArtists && (
           <div className="top flex justify-center items-center w-full relative max-w-lg mx-auto h-64 ">
             <img
               src={topArtists[0].images[0].url}
               alt="Image 1"
               className={
-                "p1 rounded-full w-60 absolute z-20 duration-300 hover:scale-105 " +
+                "p1 rounded-full w-44 xl:w-60 absolute z-20 duration-300 hover:scale-105 " +
                 (overP2 ? "translate-x-5 scale-90 rotate-6" : "") +
                 (overP3 ? "-translate-x-5 scale-90 -rotate-6" : "")
               }
@@ -37,14 +37,14 @@ function TopArtistsList() {
             <img
               src={topArtists[1].images[0].url}
               alt="Image 2"
-              class="p2 rounded-full w-48 absolute left-0 z-10 duration-300 hover:scale-105 hover:-translate-x-2"
+              class="p2 rounded-full w-32 xl:w-48 absolute left-0 z-10 duration-300 hover:scale-105 hover:-translate-x-2"
               onMouseOver={() => setOverP2(true)}
               onMouseLeave={() => setOverP2(false)}
             />
             <img
               src={topArtists[2].images[0].url}
               alt="Image 3"
-              class="p3 rounded-full w-44 absolute right-0 z-0 duration-300 hover:scale-105 hover:translate-x-2"
+              class="p3 rounded-full w-28 xl:w-44 absolute right-0 z-0 duration-300 hover:scale-105 hover:translate-x-2"
               onMouseOver={() => setOverP3(true)}
               onMouseLeave={() => setOverP3(false)}
             />

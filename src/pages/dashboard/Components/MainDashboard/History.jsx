@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 import { fetchRecentlyPlayedTracks } from "../../../../services/DataFetchService";
 import { getPlayedMinutesOfEachDay, timeAgo } from "../../../../helper/helpers";
@@ -69,39 +70,40 @@ function History() {
       <h3 className="text-start ml-5 font-[spotify-bold]">
         Minutes Listened{" "}
         <span className="text-sm text-gray-400">
-          -limited to latest 50 tracks-
+          -limited: latest 50 tracks-
         </span>
       </h3>
-      <div className="bg-[#19191b] p-7 relative rounded-lg pb-2">
-        <div className="flex justify-start bg-white-500">
-          <LineChart
-            width={1125}
-            height={250}
-            data={chartData}
-            // margin={{
-            //   top: 5,
-            //   right: 30,
-            //   left: 20,
-            //   bottom: 5,
-            // }}
-          >
-            <CartesianGrid strokeDasharray="2" />
-            <XAxis tick={{ fontSize: "15px" }} dataKey="date" />
-            <YAxis
-              tick={{ fontSize: "15px" }}
-              domain={[
-                (dataMin) => 0 - Math.abs(dataMin),
-                (dataMax) => Math.ceil((dataMax * 1.1) / 5) * 5,
-              ]}
-            />
-            <Tooltip content={<CustomTooltip />} />
-            <Line
-              type="monotone"
-              dataKey="minutes"
-              stroke="#1DB954"
-              strokeWidth={3}
-            />
-          </LineChart>
+      <div className="bg-[#19191b] py-7 px-5 relative rounded-lg pb-2 w-full xl:p-7">
+        <div className="flex justify-start bg-white-500 xl:justify-center">
+          <ResponsiveContainer height={250} width="95%">
+            <LineChart
+              data={chartData}
+              // margin={{
+              //   top: 5,
+              //   right: 30,
+              //   left: 20,
+              //   bottom: 5,
+              // }}
+            >
+              <CartesianGrid strokeDasharray="2" />
+              <XAxis tick={{ fontSize: "15px" }} dataKey="date" />
+              <YAxis
+                tick={{ fontSize: "15px" }}
+                domain={[
+                  (dataMin) => 0 - Math.abs(dataMin),
+                  (dataMax) => Math.ceil((dataMax * 1.1) / 5) * 5,
+                ]}
+                width={40}
+              />
+              <Tooltip content={<CustomTooltip />} />
+              <Line
+                type="monotone"
+                dataKey="minutes"
+                stroke="#1DB954"
+                strokeWidth={3}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
         <div className="mt-7 flex flex-col justify-center">
           <ul className="">
