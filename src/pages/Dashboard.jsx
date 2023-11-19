@@ -14,7 +14,7 @@ function Dashboard() {
     setIsAuthenticated(false);
     const init = async () => {
       if (!(await isAuthed())) {
-        history.push("/login");
+        history.push("/home");
       } else {
         setIsAuthenticated(true);
       }

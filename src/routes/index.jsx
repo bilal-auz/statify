@@ -6,7 +6,7 @@ import Dashboard from "../pages/Dashboard";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/login" exact component={Login} />
+      <Route path="/home" exact component={Login} />
       <Route path="/dashboard" exact component={Dashboard} />
       <Redirect to="/dashboard" />
     </Switch>
