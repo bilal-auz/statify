@@ -70,7 +70,7 @@ function Login() {
               <div className="flex flex-col justify-end relative h-full">
                 <img
                   src="assets/mockups/mobile.svg"
-                  className="max-w-sm rounded-lg shadow-2xl"
+                  className="max-w-sm rounded-lg"
                 />
               </div>
               <div className="w-[50%] flex flex-col justify-start mt-20">
