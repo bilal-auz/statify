@@ -111,13 +111,13 @@ function Login() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center w-full bg-base-200 px-2 lg:px-0">
+      <div className="flex flex-col items-center justify-center w-full bg-[#191e24] px-2 lg:px-0">
         <div className="mb-10">
           <div className="px-3 mt-24 max-w-md xl:max-w-7xl">
-            <h1 className="font-black font-[spotify-bold] text-3xl lg:text-4xl">
+            <h1 className="font-[spotify-bold] text-3xl lg:text-4xl">
               Discover Your Music's Hidden Story
             </h1>
-            <p className="py-2 text-gray-500 font-[spotify-mid] text-xl">
+            <p className="py-2 text-[#6b7280] font-[spotify-mid] text-xl">
               Elevate your listening experience to the next level and reveal the
               hidden tales within
             </p>
@@ -133,10 +133,10 @@ function Login() {
 
         <div className="flex flex-row justify-between pt-3 items-center w-[50%] bg-[#121212] w-[80%] max-w-md xl:max-w-7xl rounded-lg pl-10 lg:pl-32 lg:pt-8 mb-5">
           <div className="flex flex-col w-[60%]">
-            <h1 className="text-left font-black font-[spotify-bold] text-base lg:text-4xl">
+            <h1 className="text-left text-s_white font-[spotify-bold] lg:text-4xl">
               Analyze your listening activity
             </h1>
-            <p className="mb-2 lg:mb-0 lg:py-2 text-gray-500 text-left font-[spotify-mid] text-xs lg:text-xl">
+            <p className="mb-2 lg:mb-0 lg:py-2 text-[#6b7280] text-left font-[spotify-mid] text-xs lg:text-xl">
               Try it now
             </p>
             <button
